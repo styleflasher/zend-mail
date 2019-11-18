@@ -512,7 +512,7 @@ class Headers implements Countable, Iterator
         }
 
         $current = $headers;
-        $current->setEncoding($encoding);
+        $current->setEncoding($key === 'contentdisposition' && $current->getFieldValue(false) === 'inline' ? 'ASCII' : $encoding);
         $this->headers[$index] = $current;
         return $current;
     }
